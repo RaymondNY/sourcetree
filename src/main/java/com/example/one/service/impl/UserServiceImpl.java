@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean changePwd(User user) {
         user.setUpdatedTime(new Date());
         User res = userDao.save(user);
