@@ -27,4 +27,7 @@ public interface UserService {
      * @return
      */
     User queryUserForLogin(String username, String password);
+
+
+    boolean changePwd(User user);
 }

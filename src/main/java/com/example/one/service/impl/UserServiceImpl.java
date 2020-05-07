@@ -54,4 +54,11 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findByUsernameAndPassword(username, password);
         return user;
     }
+
+    @Override
+    public boolean changePwd(User user) {
+        user.setUpdatedTime(new Date());
+        User res = userDao.save(user);
+        return res == null ? false : true;
+    }
 }

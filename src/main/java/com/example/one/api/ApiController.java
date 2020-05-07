@@ -60,11 +60,16 @@ public class ApiController {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)|| StringUtils.isBlank(newPassword)) {
             return JSONResult.errorMsg("用户名或密码不能为空");
         }
-        // 2. 实现登录
+        // 2. 用户是否存在
         User userResult = userService.queryUserForLogin(username, MD5Utils.getMD5Str(password));
         // 3. 账号密码校验
         if (userResult == null) {
             return JSONResult.errorMsg("用户名或密码不正确");
+        }
+        userResult.setPassword(MD5Utils.getMD5Str(newPassword));
+        boolean b = userService.changePwd(userResult);
+        if (!b) {
+            return JSONResult.errorMsg("修改密码没有成功");
         }
         return JSONResult.ok();
     }
