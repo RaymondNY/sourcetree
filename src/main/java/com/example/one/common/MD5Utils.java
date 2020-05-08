@@ -9,7 +9,7 @@ public class MD5Utils {
 	/**
 	 * 
 	 * @Title: MD5Utils.java
-	 * @Package com.mufeng.utils
+	 * @Package
 	 * @Description: 对字符串进行md5加密
 	 */
 	public static String getMD5Str(String strValue) throws Exception {
